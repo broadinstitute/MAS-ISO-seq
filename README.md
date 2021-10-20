@@ -87,3 +87,5 @@ Progress: 20835 read [00:16, 1259.09 read/s]
 $ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | samtools sort - > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 ```
+
+![IGV screenshot](https://github.com/broadinstitute/MAS-ISO-seq/blob/main/IGV.png?raw=true)
