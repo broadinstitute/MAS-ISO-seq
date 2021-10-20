@@ -8,8 +8,6 @@ This repository contains links to example data and tools/instructions for initia
 
 Two example datasets (with two files each) are available for download by anonymous FTP:
 
-There were two datasets from this study: 
-
 | Array design | Dataset          | size  | URL                                                                                                   |
 |--------------|------------------|-------|-------------------------------------------------------------------------------------------------------|
 | mas10        | SIRV set 4 reads | 17.0G | gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam      |
