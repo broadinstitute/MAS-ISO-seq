@@ -8,12 +8,12 @@ This repository contains links to example data and tools/instructions for initia
 
 Two example datasets (with two files each) are available for download by anonymous FTP:
 
-| Array design | Dataset          | size  | URL                                                                                                   |
-|--------------|------------------|-------|-------------------------------------------------------------------------------------------------------|
-| mas10        | SIRV set 4 reads | 17.0G | gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam      |
-| mas10        | SIRV set 4 index | 7.0M  | gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam.pbi  |
-| mas15        | SIRV set 4 reads | 98.8G | gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas15.reads.bam      |
-| mas15        | SIRV set 4 index | 31.8M | gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas15.reads.bam.pbi  |
+| Array design | Dataset          | Size  | Download command                                                                                           |
+|--------------|------------------|-------|------------------------------------------------------------------------------------------------------------|
+| mas10        | SIRV set 4 reads | 17.0G | wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam      |
+| mas10        | SIRV set 4 index | 7.0M  | wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam.pbi  |
+| mas15        | SIRV set 4 reads | 98.8G | wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas15.reads.bam      |
+| mas15        | SIRV set 4 index | 31.8M | wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas15.reads.bam.pbi  |
 
 \* - The SIRV samples were prepared with two library preparation techniques: a length 10 MAS-ISO-seq array and a length 15 MAS-ISO-seq array.  They were multiplexed into a single pooled sample and sequenced in a single run on a PacBio Sequel IIe.  Our software package, [Longbow](https://github.com/broadinstitute/longbow/releases/tag/v0.2.2), was then used to demultiplex the single SIRV multiplexed sample into two outputs - one for the length 15 array and one for the length 10 array.
 
@@ -47,3 +47,5 @@ Collecting wheel (from -r dev-requirements.txt (line 3))
 $ longbow version
 0.4.3
 ```
+
+
