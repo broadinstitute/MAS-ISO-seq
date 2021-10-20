@@ -80,7 +80,7 @@ Progress: 20835 read [00:16, 1259.09 read/s]
 [INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per failing read: 0.0000 [11]
 
 # Align the reads to the SIRV reference sequence
-$ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | ~/repositories/minimap2/minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" ~/repositories/long-read-pipelines/scratch/SIRV_Library.fasta - | samtools sort - > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
+$ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | samtools sort - > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 
 $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 ```
