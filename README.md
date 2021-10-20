@@ -40,7 +40,7 @@ For alignment to a reference genome, you will need to have [minimap2](https://gi
 
 ## A fully worked example
 
-In this example, we will fully process a set of SIRV sequences that have been prepared using the 10-element MAS-ISO-seq array design (we refer to this as the 'mas10' model).  This example will download the data, annotate the reads, segment them into cDNA sequences, filter out poorly-behaved sequences, and align them to the SIRV reference sequence so they can be visualized in IGV.
+In this example, we will fully process a small chunk of SIRV sequences that have been prepared using the 10-element MAS-ISO-seq array design (we refer to this as the 'mas10' model).  This example will download the data, annotate a portion of the reads, segment them into cDNA sequences, filter out poorly-behaved sequences, and align them to the SIRV reference sequence so they can be visualized in IGV.
 
 ```sh
 # Download the reads, PacBio index file, the SIRV reference sequence, and the SIRV gene annotations
@@ -49,7 +49,9 @@ $ wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS
 $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Library.fasta
 $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Library.gff3
 
-# Annotate a chunk of the reads with the appropriate array model (in this case, 'mas10')
+# Annotate the reads with the appropriate array model (in this case, 'mas10').
+# For deployment in HPC or cloud environments, Longbow supports chunking with
+# the '-c i/N' argument, so we shall only process the first chunk out of 300 total.
 $ longbow annotate -m mas10 \
                    -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam \
                    -c 1/300 \
