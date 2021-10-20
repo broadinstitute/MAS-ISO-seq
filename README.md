@@ -46,7 +46,10 @@ $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Li
 $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Library.gff3
 
 # Annotate a chunk of the reads with the appropriate array model (in this case, 'mas10')
-$ longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
+$ longbow annotate -m mas10 \
+                   -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam \
+                   -c 1/300 \
+                   SIRV_MAS_15-10x_mas10.reads.bam
 [INFO 2021-10-20 11:11:22 annotate] Invoked via: longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
 [INFO 2021-10-20 11:11:22 annotate] Running with 11 worker subprocess(es)
 [INFO 2021-10-20 11:11:22 annotate] Using The MAS-seq 10 array element model.
@@ -56,7 +59,9 @@ Progress: 100%|█████████████████████�
 [INFO 2021-10-20 11:14:51 annotate] Done. Elapsed time: 208.69s. Overall processing rate: 12.86 reads/s.
 
 # Segment the reads according to the annotations
-$ longbow segment -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
+$ longbow segment -m mas10 \
+                  -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam \
+                  SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
 [INFO 2021-10-20 11:16:29  segment] Invoked via: longbow segment -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
 [INFO 2021-10-20 11:16:29  segment] Running with 11 worker subprocess(es)
 [INFO 2021-10-20 11:16:29  segment] Using bounded region splitting mode.
@@ -67,7 +72,9 @@ Progress: 0 read [00:00, ? read/s][INFO 2021-10-20 11:16:29  segment] Using The 
 [INFO 2021-10-20 11:16:46  segment] Done. Elapsed time: 17.63s.
 
 # Filter out reads that do not conform to the array design
-$ longbow filter -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
+$ longbow filter -m mas10 \
+                 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam \
+                 SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
 [INFO 2021-10-20 11:17:40   filter] Invoked via: longbow filter -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
 [INFO 2021-10-20 11:17:40   filter] Using The MAS-seq 10 array element model.
 [INFO 2021-10-20 11:17:41   filter] Writing reads that conform to the model to: SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam
@@ -84,7 +91,10 @@ Progress: 20835 read [00:16, 1259.09 read/s]
 [INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per failing read: 0.0000 [11]
 
 # Align the reads to the SIRV reference sequence
-$ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | samtools sort - > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
+$ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | \
+    minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | \
+    samtools sort - \
+    > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 ```
 
