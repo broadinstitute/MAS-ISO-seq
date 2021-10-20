@@ -107,3 +107,7 @@ $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered
 These can now be loaded into IGV (use the menu item Genomes -> Load Genome from File to load the SIRV_Library.fasta reference genome, and the menu item File -> Load from File... item to load the aligned BAM file and the SIRV_Library.gff3 annotations).
 
 ![IGV screenshot](https://github.com/broadinstitute/MAS-ISO-seq/blob/main/IGV.png?raw=true)
+
+## Questions/comments/concerns
+
+Feedback is most welcome! Please contact Kiran V Garimella (kiran at broadinstitute dot org) or Jonn Smith (jonn at broadinstitute dot org) with any feedback.  We also welcome issues to be filed in our [Issue Tracker](https://github.com/broadinstitute/longbow/issues).
