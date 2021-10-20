@@ -45,7 +45,7 @@ $ wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS
 $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Library.fasta
 $ wget https://raw.githubusercontent.com/broadinstitute/MAS-ISO-seq/main/SIRV_Library.gff3
 
-# Annotate the reads with the appropriate array model (in this case, 'mas10')
+# Annotate a chunk of the reads with the appropriate array model (in this case, 'mas10')
 $ longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
 [INFO 2021-10-20 11:11:22 annotate] Invoked via: longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
 [INFO 2021-10-20 11:11:22 annotate] Running with 11 worker subprocess(es)
@@ -85,6 +85,5 @@ Progress: 20835 read [00:16, 1259.09 read/s]
 
 # Align the reads to the SIRV reference sequence
 $ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | samtools sort - > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
-
 $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 ```
