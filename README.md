@@ -6,7 +6,7 @@ This repository contains links to example data and tools/instructions for initia
 
 ## Example Data
 
-Two example datasets (with two files each) are available for download by anonymous FTP:
+Much of our validation of MAS-ISO-seq was done using Spike-in RNA Variant Control Mix sequences ([SIRVs set 4](https://www.lexogen.com/sirvs/sirv-sets/) from [Lexogen](https://www.lexogen.com/)).  Two example SIRV datasets (with two files each) are available for download by anonymous FTP:
 
 | Array design | Dataset          | Size  | Download command                                                                                           |
 |--------------|------------------|-------|------------------------------------------------------------------------------------------------------------|
