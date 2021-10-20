@@ -21,7 +21,7 @@ Much of our validation of MAS-ISO-seq was done using Spike-in RNA Variant Contro
 
 Our MAS-ISO-seq processing tool, Longbow, performs statistical annotation, read segmentation (aka "deconcatenation"), and filtering.  Complete documentation can be found on our [Longbow documentation page](https://broadinstitute.github.io/longbow/).
 
-Longbow is installable from Github source:
+Longbow is installable from Github:
 
 ```sh
 $ git clone git@github.com:broadinstitute/longbow.git
