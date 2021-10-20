@@ -22,30 +22,21 @@ Much of our validation of MAS-ISO-seq was done using Spike-in RNA Variant Contro
 From Github source:
 
 ```sh
-$ git clone git@github.com:broadinstitute/longbow.git \
-      && cd longbow
-Cloning into 'longbow'...
-remote: Enumerating objects: 999, done.
-remote: Counting objects: 100% (585/585), done.
-remote: Compressing objects: 100% (330/330), done.
-remote: Total 999 (delta 365), reused 418 (delta 255), pack-reused 414
-Receiving objects: 100% (999/999), 5.52 MiB | 10.52 MiB/s, done.
-Resolving deltas: 100% (508/508), done.
-
+$ git clone git@github.com:broadinstitute/longbow.git
+$ cd longbow
 $ python -mvenv venv \
       && . venv/bin/activate \
       && pip install -r dev-requirements.txt \
       && pip install -e .
-Collecting isort==4.3.21 (from -r dev-requirements.txt (line 1))
-  Using cached https://files.pythonhosted.org/packages/e5/b0/c121fd1fa3419ea9bfd55c7f9c4fedfec5143208d8c7ad3ce3db6c623c21/isort-4.3.21-py2.py3-none-any.whl
-Collecting tox (from -r dev-requirements.txt (line 2))
-  Using cached https://files.pythonhosted.org/packages/78/b0/ce98616ec9c3f270495a2493cde4d81b1f499057222ae77a8103aea59777/tox-3.24.4-py2.py3-none-any.whl
-Collecting wheel (from -r dev-requirements.txt (line 3))
-  Using cached https://files.pythonhosted.org/packages/04/80/cad93b40262f5d09f6de82adbee452fd43cdff60830b56a74c5930f7e277/wheel-0.37.0-py2.py3-none-any.whl
-(...snip...)
-      
 $ longbow version
 0.4.3
 ```
 
+## Processing 
+
+```sh
+$ longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
+$ longbow segment -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
+$ longbow filter -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
+```
 
