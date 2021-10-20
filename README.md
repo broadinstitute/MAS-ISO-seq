@@ -64,7 +64,7 @@ Progress: 100%|█████████████████████�
 [INFO 2021-10-20 11:14:51 annotate] Annotated 2683 reads with 107712 total sections.
 [INFO 2021-10-20 11:14:51 annotate] Done. Elapsed time: 208.69s. Overall processing rate: 12.86 reads/s.
 
-# Segment the reads according to the annotations
+# Segment the reads according to the annotations.
 $ longbow segment -m mas10 \
                   -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam \
                   SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
@@ -77,7 +77,7 @@ Progress: 0 read [00:00, ? read/s][INFO 2021-10-20 11:16:29  segment] Using The 
 [INFO 2021-10-20 11:16:46  segment] MAS-seq gain factor: 7.77x
 [INFO 2021-10-20 11:16:46  segment] Done. Elapsed time: 17.63s.
 
-# Filter out reads that do not conform to the array design
+# Filter out reads that do not conform to the 'mas10' array design.
 $ longbow filter -m mas10 \
                  -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam \
                  SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
@@ -96,12 +96,14 @@ Progress: 20835 read [00:16, 1259.09 read/s]
 [INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per passing read: 1.0000 [11]
 [INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per failing read: 0.0000 [11]
 
-# Align the reads to the SIRV reference sequence
+# Align the reads to the SIRV reference sequence.
 $ samtools fastq SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam | \
     minimap2 -ayYL -x splice:hq -R "@RG\tID:SIRVmas10\tSM:SIRV" SIRV_Library.fasta - | \
     samtools sort - \
     > SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 $ samtools index SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.aligned.bam
 ```
+
+These can now be loaded into IGV (use the menu item Genomes -> Load Genome from File to load the SIRV_Library.fasta reference genome, and the menu item File -> Load from File... item to load the aligned BAM file and the SIRV_Library.gff3 annotations).
 
 ![IGV screenshot](https://github.com/broadinstitute/MAS-ISO-seq/blob/main/IGV.png?raw=true)
