@@ -32,11 +32,45 @@ $ longbow version
 0.4.3
 ```
 
-## Processing 
+## A fully worked example
 
 ```sh
+$ wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam
+$ wget gsapubftp-anonymous@ftp.broadinstitute.org:/MasSeqNatBiotech2021/SIRV_MAS_15-10x_mas10.reads.bam.pbi
+
 $ longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
+[INFO 2021-10-20 11:11:22 annotate] Invoked via: longbow annotate -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam -c 1/300 SIRV_MAS_15-10x_mas10.reads.bam
+[INFO 2021-10-20 11:11:22 annotate] Running with 11 worker subprocess(es)
+[INFO 2021-10-20 11:11:22 annotate] Using The MAS-seq 10 array element model.
+[INFO 2021-10-20 11:11:31 annotate] Annotating 2683 reads from chunk 1/300
+Progress: 100%|███████████████████████████████████████████████████████████████████████████████████████| 2683/2683 [03:20<00:00, 13.41 read/s]
+[INFO 2021-10-20 11:14:51 annotate] Annotated 2683 reads with 107712 total sections.
+[INFO 2021-10-20 11:14:51 annotate] Done. Elapsed time: 208.69s. Overall processing rate: 12.86 reads/s.
+
 $ longbow segment -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
+[INFO 2021-10-20 11:16:29  segment] Invoked via: longbow segment -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.bam
+[INFO 2021-10-20 11:16:29  segment] Running with 11 worker subprocess(es)
+[INFO 2021-10-20 11:16:29  segment] Using bounded region splitting mode.
+Progress: 0 read [00:00, ? read/s][INFO 2021-10-20 11:16:29  segment] Using The MAS-seq 10 array element model.
+[INFO 2021-10-20 11:16:30  segment] Using The MAS-seq 10 array element model.
+[INFO 2021-10-20 11:16:46  segment] Segmented 2683 reads with 20835 total segments.
+[INFO 2021-10-20 11:16:46  segment] MAS-seq gain factor: 7.77x
+[INFO 2021-10-20 11:16:46  segment] Done. Elapsed time: 17.63s.
+
 $ longbow filter -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
+[INFO 2021-10-20 11:17:40   filter] Invoked via: longbow filter -m mas10 -o SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.bam
+[INFO 2021-10-20 11:17:40   filter] Using The MAS-seq 10 array element model.
+[INFO 2021-10-20 11:17:41   filter] Writing reads that conform to the model to: SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_passed.bam
+[INFO 2021-10-20 11:17:41   filter] Writing reads that do not conform to the model to: SIRV_MAS_15-10x_mas10.reads.annotated.chunk1.segmented.filtered.bam_longbow_filter_failed.bam
+[INFO 2021-10-20 11:17:41   filter] Filtering according to mas10 model ordered key adapters: Q, C, M, I, O, J, B, D, K, H, R
+Progress: 20835 read [00:16, 1259.09 read/s]
+[INFO 2021-10-20 11:17:58   filter] Done. Elapsed time: 18.01s.
+[INFO 2021-10-20 11:17:58   filter] Total Reads Processed: 20835
+[INFO 2021-10-20 11:17:58   filter] # Reads Passing Model Filter: 18350 (88.07%)
+[INFO 2021-10-20 11:17:58   filter] # Reads Failing Model Filter: 2485 (11.93%)
+[INFO 2021-10-20 11:17:58   filter] Total # correctly ordered key adapters in passing reads: 18350
+[INFO 2021-10-20 11:17:58   filter] Total # correctly ordered key adapters in failing reads: 0
+[INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per passing read: 1.0000 [11]
+[INFO 2021-10-20 11:17:58   filter] Avg # correctly ordered key adapters per failing read: 0.0000 [11]
 ```
 
