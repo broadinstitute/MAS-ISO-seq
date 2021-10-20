@@ -36,9 +36,11 @@ $ longbow version
 
 ## Optional pre-requisites
 
-For alignment to a reference genome, you will need to have [minimap2](https://github.com/lh3/minimap2) and [samtools](https://github.com/samtools/samtools) installed. If you only want to annotate/segment/filter the MAS-ISO-seq reads, you may skip this part.
+For alignment to a reference genome, you will need to have [minimap2](https://github.com/lh3/minimap2) and [samtools](https://github.com/samtools/samtools) installed. You will also need (IGV)[https://software.broadinstitute.org/software/igv/download] to view the resulting alignments. If you only want to annotate/segment/filter the MAS-ISO-seq reads, you may skip this part.
 
 ## A fully worked example
+
+In this example, we will fully process a set of SIRV sequences that have been prepared using the 10-element MAS-ISO-seq array design (we refer to this as the 'mas10' model).  This example will download the data, annotate the reads, segment them into cDNA sequences, filter out poorly-behaved sequences, and align them to the SIRV reference sequence so they can be visualized in IGV.
 
 ```sh
 # Download the reads, PacBio index file, the SIRV reference sequence, and the SIRV gene annotations
