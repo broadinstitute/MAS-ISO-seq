@@ -32,6 +32,10 @@ $ longbow version
 0.4.3
 ```
 
+## Optional pre-requisites
+
+For alignment to a reference genome, you will need to have [minimap2](https://github.com/lh3/minimap2) and [samtools](https://github.com/samtools/samtools) installed. If you only want to annotate/segment/filter the MAS-ISO-seq reads, you may skip this part.
+
 ## A fully worked example
 
 ```sh
